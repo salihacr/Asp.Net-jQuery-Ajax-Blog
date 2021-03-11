@@ -42,6 +42,8 @@ namespace BlogApp.Asp_Net_Web_Forms.Admin
             }
             // update ado.net with helper.dbmanager
             dbManager.UpdateData("Users", "UserId", Session["UserId"].ToString(), columns, values);
+            Session["Username"] = txtUsername.Value;
+            Session["Image"] = lblImage.Text;
         }
 
         private string CreateImage()

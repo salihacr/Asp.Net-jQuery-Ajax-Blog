@@ -61,6 +61,9 @@
             GetData();
         });
 
+        function GetComments() {
+            
+        }
 
         function GetData() {
             //<a class="nav-link" href="/Admin/Profile.aspx?User=<%--<%=Session["Username"] %>--%>">

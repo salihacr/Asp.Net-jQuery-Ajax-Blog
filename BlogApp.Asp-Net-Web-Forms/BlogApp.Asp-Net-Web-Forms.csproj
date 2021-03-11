@@ -82,6 +82,8 @@
     </Content>
     <Content Include="Auth\Login.aspx" />
     <Content Include="Auth\Register.aspx" />
+    <Content Include="Blog\Article.aspx" />
+    <Content Include="Blog\Index.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -142,6 +144,20 @@
     <Compile Include="Auth\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Blog\Article.aspx.cs">
+      <DependentUpon>Article.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Blog\Article.aspx.designer.cs">
+      <DependentUpon>Article.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Blog\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Blog\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,6 +171,13 @@
     <Compile Include="MasterPages\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\Blog.Master.cs">
+      <DependentUpon>Blog.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Blog.Master.designer.cs">
+      <DependentUpon>Blog.Master</DependentUpon>
+    </Compile>
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -164,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPages\Admin.Master" />
+    <Content Include="MasterPages\Blog.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -173,7 +197,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Blog\" />
     <Folder Include="Content\" />
     <Folder Include="Error\" />
     <Folder Include="Images\Profile\" />

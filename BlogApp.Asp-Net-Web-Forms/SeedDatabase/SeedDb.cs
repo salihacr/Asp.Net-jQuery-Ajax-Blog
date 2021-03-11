@@ -32,6 +32,16 @@ namespace BlogApp.Asp_Net_Web_Forms.SeedDatabase
                 "('blog2','2.Blog','blog2','<h1>1. Blog Icerik</h1>','no-image','" + DateTime.Now.ToShortDateString() + "','2','u2')," +
                 "('blog3','3.Blog','blog3','<h1>1. Blog Icerik</h1>','no-image','" + DateTime.Now.ToShortDateString() + "','3','u3')";
 
+
+            string comments = "Insert Comments(CommentText, Commenter, IsApproved, BlogId)" +
+                " Values" +
+                "('Güzel','Sinan Engin','true','blog1')," +
+                "('Güzell','Rasim Ozan Kütahyalı','true','blog1')," +
+                "('Güzelll','Ahmet Çakar','true','blog1')," +
+                "('Güzellll','Abdulerim Durmaz','true','blog1')" +
+                "";
+
+
             if (!HasData("Users"))
             {
                 Insert(users);
@@ -43,6 +53,10 @@ namespace BlogApp.Asp_Net_Web_Forms.SeedDatabase
             if (!HasData("Blogs"))
             {
                 Insert(blogs);
+            }
+            if (!HasData("Comments"))
+            {
+                Insert(comments);
             }
         }
         public static void Insert(string query)
