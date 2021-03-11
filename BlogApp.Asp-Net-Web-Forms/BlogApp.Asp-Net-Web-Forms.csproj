@@ -71,7 +71,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\AddBlog.aspx" />
+    <Content Include="Admin\Blogs.aspx" />
+    <Content Include="Admin\Categories.aspx" />
+    <Content Include="Admin\Comments.aspx" />
     <Content Include="Admin\EditBlog.aspx" />
+    <Content Include="Admin\Profile.aspx" />
+    <Content Include="App_Data\blog-db.mdf" />
+    <Content Include="App_Data\blog-db_log.ldf">
+      <DependentUpon>blog-db.mdf</DependentUpon>
+    </Content>
+    <Content Include="Auth\Login.aspx" />
+    <Content Include="Auth\Register.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -83,6 +93,27 @@
     <Compile Include="Admin\AddBlog.aspx.designer.cs">
       <DependentUpon>AddBlog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Blogs.aspx.cs">
+      <DependentUpon>Blogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Blogs.aspx.designer.cs">
+      <DependentUpon>Blogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Categories.aspx.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Categories.aspx.designer.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Comments.aspx.cs">
+      <DependentUpon>Comments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Comments.aspx.designer.cs">
+      <DependentUpon>Comments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\EditBlog.aspx.cs">
       <DependentUpon>EditBlog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -90,9 +121,32 @@
     <Compile Include="Admin\EditBlog.aspx.designer.cs">
       <DependentUpon>EditBlog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auth\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auth\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Auth.cs" />
+    <Compile Include="Helpers\DbManager.cs" />
     <Compile Include="Helpers\MyConnection.cs" />
     <Compile Include="MasterPages\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
@@ -101,7 +155,12 @@
     <Compile Include="MasterPages\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeedDatabase\SeedDb.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPages\Admin.Master" />
@@ -114,13 +173,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Auth\" />
     <Folder Include="Blog\" />
     <Folder Include="Content\" />
     <Folder Include="Error\" />
     <Folder Include="Images\Profile\" />
-    <Folder Include="Models\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>

@@ -77,7 +77,7 @@
                 success: function (data) {
                     let myData = JSON.parse(data.d);
                     $('#blogName').val(myData[0].BlogName);
-                    $('#blogUrl').val(myData[0].BlogUrl);
+                    $('#blogUrl').val(myData[0].BlogURL);
                     $('#ddlCategories').val(myData[0].BlogUrl);
                     selectedValue.val(myData[0].BlogCategoryId);
                     selectedText.val(myData[0].CategoryName);

@@ -40,8 +40,8 @@ namespace BlogApp.Asp_Net_Web_Forms.Admin
         public static void Delete(string blogId)
         {
             connection.Open();
-            SqlCommand cmd = new SqlCommand("SP_Delete_Blog", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
+            string query = "Delete From Blogs Where BlogId=@blogId";
+            SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@blogId", blogId);
             cmd.ExecuteNonQuery();
             connection.Close();

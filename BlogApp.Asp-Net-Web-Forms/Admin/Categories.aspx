@@ -84,6 +84,7 @@
                     data: "{categoryId:'" + idd + "',categoryName:'" + $("#categoryName").val() + "'}",
                     success: function () {
                         alert("Update data Successfully");
+                        $("#btnSubmit").val("KAYDET");
                         GetData();
                     },
                     error: function () {
@@ -92,6 +93,7 @@
 
                 });
             }
+            $('#categoryName').val("");
 
         }
         //Retreive Record
@@ -140,7 +142,7 @@
                 error: function () {
                     alert('edit error !!');
                 }
-            });
+            });           
         }
         //Delete Record
         function DeleteData(categoryId) {

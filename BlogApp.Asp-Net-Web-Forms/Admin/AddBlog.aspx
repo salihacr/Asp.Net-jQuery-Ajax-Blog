@@ -63,7 +63,7 @@
         }
         function save() {
 
-            var blogUserId = 1;<%-- <%Session["UserId"]%>--%>
+            var blogUserId = <%Session["UserId"]%>;
 
             var selectedValue = $("#<%= ddlCategories.ClientID %>").val();
             var selectedText = $("#<%= ddlCategories.ClientID %>:selected").val();
