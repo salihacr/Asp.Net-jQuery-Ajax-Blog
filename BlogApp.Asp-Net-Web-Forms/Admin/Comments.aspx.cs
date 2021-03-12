@@ -27,13 +27,6 @@ namespace BlogApp.Asp_Net_Web_Forms.Admin
             connection.Open();
             string _data = "";
 
-            string query2 = "Select Blogs.BlogName, Blogs.BlogURL, Blogs.CreationDate, Blogs.BlogContent,Categories.CategoryName, Users.Username, Comments.CommentText, Comments.Commenter, Comments.IsApproved From Blogs" +
-    " INNER JOIN Categories ON Categories.CategoryId = Blogs.BlogCategoryId" +
-    " INNER JOIN Users ON Users.UserId = Blogs.BlogUserId" +
-    " INNER JOIN Comments ON Comments.BlogId = Blogs.BlogId" +
-    " Where BlogURL = @blogUrl";
-
-
             string query = "Select Comments.CommentId, Comments.CommentText, Comments.Commenter, Comments.IsApproved, Blogs.BlogName From Comments" +
                 " INNER JOIN Blogs ON Blogs.BlogId = Comments.BlogId";
             SqlCommand cmd = new SqlCommand(query, connection);

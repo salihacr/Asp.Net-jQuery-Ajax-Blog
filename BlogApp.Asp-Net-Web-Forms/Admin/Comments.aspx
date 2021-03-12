@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" />
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Dashboard/Kategoriler</li>
+        <li class="breadcrumb-item active">Dashboard/Yorumlar</li>
     </ol>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Kategoriler
+            Yorumlar
         </div>
         <div class="card-body">
             <div class="table">
