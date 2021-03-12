@@ -41,19 +41,21 @@
                         </div>
                     </div>
                     <hr />
-                    <input type="button" class="btn btn-primary btn-block" value="KAYDET" id="btnSave" />
+                    <input type="button" class="btn btn-primary btn-block" onclick="updateData()" value="KAYDET" id="btnSave" />
                 </form>
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
+    <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
+    <script src="../Content/js/bootstrap/popper.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
     <script>
-
-
-
-        var selectedValue = $("#<%= ddlCategories.ClientID %>");//.val();
-        var selectedText = $("#<%= ddlCategories.ClientID %>:selected");//.val();
+        var selectedValue = $("#<%= ddlCategories.ClientID %>");
+        var selectedText = $("#<%= ddlCategories.ClientID %>:selected");
 
         var editor = CKEDITOR.replace('editor');
 
@@ -61,15 +63,8 @@
             GetData();
         });
 
-        function GetComments() {
-            
-        }
-
         function GetData() {
-            //<a class="nav-link" href="/Admin/Profile.aspx?User=<%--<%=Session["Username"] %>--%>">
             const blogId = "<%=Request.QueryString["blogId"]%>";
-            console.log(blogId);
-            $('#blogName').val("salih");
             $.ajax({
                 url: "EditBlog.aspx/GetBlogById",
                 method: "post",
@@ -86,28 +81,31 @@
                     selectedText.val(myData[0].CategoryName);
                     $('#editor').val(myData[0].BlogContent);
                 },
-                error: function (error) {
-                    alert(error.responseText);
-                    alert("hata get");
+                error: function () {
+                    toastr.error("Blog getirilirken hata yaşandı.");
                 }
             });
         }
-
         function updateData() {
             const blogId = "<%=Request.QueryString["blogId"]%>";
-            console.log("{blogName:'" + $("#blogName").val() + "',blogUrl:'" + $("#blogUrl").val() + "',blogContent:'" + editor.getData() + "'}");
+
+            var selectedValue = $("#<%= ddlCategories.ClientID %>").val();
+            var selectedText = $("#<%= ddlCategories.ClientID %>:selected").val();
+
+            const obj = "{blogId:'" + blogId + "',blogName:'" + $("#blogName").val() + "'" + ", blogUrl: '" + $("#blogUrl").val() + "', blogContent: '" + editor.getData() + "', blogCategoryId: '" + selectedValue + "'}";
+            console.log(obj);
             $.ajax({
                 url: 'EditBlog.aspx/UpdateBlog',
                 type: 'post',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
-                data: "{blogId:'" + blogId + "',blogName:'" + $("#blogName").val() + "',blogUrl:'" + $("#blogUrl").val() + "',blogContent:'" + editor.getData() + "'}",
+                data: obj,
                 success: function () {
-                    alert("Update data Successfully");
+                    toastr.success("Blog başarıyla güncellendi.");
                     GetData();
                 },
                 error: function () {
-                    alert("Update Error");
+                    toastr.error("Blog güncellenirken hata meydana geldi.");
                 }
             });
         }

@@ -15,11 +15,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 </head>
 
 <body>
@@ -96,14 +92,31 @@
             </div>
         </footer>
     </div>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
     <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
+    <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
     <script src="../Content/js/bootstrap/popper.min.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="../Content/js/clean-blog.min.js"></script>
 
+    <style>
+        #toast-container > .toast-success {
+            background-color: #28a745 !important;
+        }
+
+        #toast-container > .toast-info {
+            background-color: #17a2b8 !important;
+        }
+
+        #toast-container > .toast-warning {
+            background-color: #e0a800 !important;
+        }
+
+        #toast-container > .toast-error {
+            background-color: #bd2130 !important;
+        }
+    </style>
 </body>
 </html>

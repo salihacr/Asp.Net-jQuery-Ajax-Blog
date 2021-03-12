@@ -1,9 +1,6 @@
-﻿using BlogApp.Asp_Net_Web_Forms.Helpers;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+using BlogApp.Asp_Net_Web_Forms.Helpers;
 
 namespace BlogApp.Asp_Net_Web_Forms.SeedDatabase
 {
@@ -15,12 +12,11 @@ namespace BlogApp.Asp_Net_Web_Forms.SeedDatabase
         {
             string users = "Insert Users(UserId, FullName, Email, Username, Image, Gender, Password, RoleName)" +
                 " Values" +
-                "('u1','Admin Admin','admin@blog.com','admin','no-image','male','" + authManager.CreatePasswordHash("admin") + "','Admin')," +
-                "('u2','User1 User','user1@blog.com','user1','no-image','male','" + authManager.CreatePasswordHash("user1") + "','User')," +
-                "('u3','User2 User','user2@blog.com','user2','no-image','male','" + authManager.CreatePasswordHash("user2") + "','User')";
+                "('u1','Admin Admin','admin@blog.com','admin','no-image','male','" + authManager.CreatePasswordHash("admin") + "','Admin')";
 
             string categories = "Insert Categories(CategoryName)" +
-                " Values('Yazılım')," +
+                " Values" +
+                "('Yazılım')," +
                 "('Programlama')," +
                 "('Yapay Zeka')," +
                 "('Veritabanı')," +
@@ -28,17 +24,22 @@ namespace BlogApp.Asp_Net_Web_Forms.SeedDatabase
 
             string blogs = "Insert Blogs(BlogId, BlogName, BlogURL, BlogContent, HeaderImage, CreationDate, BlogCategoryId, BlogUserId)" +
                 " Values" +
-                "('blog1','1.Blog','blog1','<h1>1. Blog Icerik</h1>','no-image','" + DateTime.Now.ToShortDateString() + "','1','u1')," +
-                "('blog2','2.Blog','blog2','<h1>1. Blog Icerik</h1>','no-image','" + DateTime.Now.ToShortDateString() + "','2','u2')," +
-                "('blog3','3.Blog','blog3','<h1>1. Blog Icerik</h1>','no-image','" + DateTime.Now.ToShortDateString() + "','3','u3')";
+                "('blog1','1.Blog','blog1','<h1>1. Blog Icerik</h1> <br/> <p>1. Blogun içeriği, lorem ipsum...</p>','no-image','" + DateTime.Now.ToShortDateString().ToString() + "','1','u1')," +
+                "('blog2','2.Blog','blog2','<h1>2. Blog Icerik</h1> <br/> <p>2. Blogun içeriği, lorem ipsum...</p>','no-image','" + DateTime.Now.ToShortDateString().ToString() + "','2','u1')," +
+                "('blog3','3.Blog','blog3','<h1>3. Blog Icerik</h1> <br/> <p>3. Blogun içeriği, lorem ipsum...</p>','no-image','" + DateTime.Now.ToShortDateString().ToString() + "','3','u1')";
 
 
             string comments = "Insert Comments(CommentText, Commenter, IsApproved, BlogId)" +
                 " Values" +
-                "('Güzel','Sinan Engin','true','blog1')," +
-                "('Güzell','Rasim Ozan Kütahyalı','true','blog1')," +
-                "('Güzelll','Ahmet Çakar','true','blog1')," +
-                "('Güzellll','Abdulerim Durmaz','true','blog1')" +
+                "('Erto Beştaşa Geçelim','Sinan Engin','true','blog1')," +
+                "('Haydaaa','Rasim Ozan Kütahyalı','true','blog1')," +
+                "('Bakın Beyler','Ahmet Çakar','true','blog1')," +
+                "('Hocam beni tebrik eder misin ?','Abdulkerim Durmaz','true','blog1')," +
+                "('Sinan Engin in instagram adresi sinanengin.','Ertem Şener','true','blog2')," +
+                "('Benim fikrim beni ilgilendirmez.','Sinan Engin','true','blog2')," +
+                "('Ya Sertaç yeter be kardeşim, baba büyüksün yakıyosun baba.','Sinan Engin','true','blog3')," +
+                "('Ya Mevlüt yeter telefonu kıracam ya.','Sinan Engin','true','blog3')," +
+                "('Dinçer kardeşime selamlar.','Sinan Engin','true','blog3')" +
                 "";
 
 

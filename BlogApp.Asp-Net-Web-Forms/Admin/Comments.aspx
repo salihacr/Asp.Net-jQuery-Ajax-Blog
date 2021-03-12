@@ -101,11 +101,14 @@
                     dataType: 'json',
                     data: obj,
                     success: function () {
-                        alert("Update data Successfully");
+                        toastr.success("Yorum onayı güncellendi.");
+                        //toastr.error("Yorum onayı güncellendi.");
+                        //toastr.info("Yorum onayı güncellendi.");
+                        //toastr.warning("Yorum onayı güncellendi.");
                         GetData();
                     },
                     error: function () {
-                        alert("Update Error");
+                        toastr.error("Bir hata oluştu.");
                     }
 
                 });
@@ -113,6 +116,7 @@
         }
         //Retreive Record
         function GetData() {
+
             $.ajax({
                 url: 'Comments.aspx/GetAll',
                 type: 'post',
@@ -134,7 +138,7 @@
                     }
                 },
                 error: function () {
-                    alert("Get Error");
+                    toastr.error("Veriler getirilemedi.");
                 }
             });
 
@@ -165,12 +169,12 @@
                 dataType: 'json',
                 data: "{commentId : '" + commentId + "'}",
                 success: function () {
-                    alert('delete success !!');
+                    toastr.success("Yorum silindi.");
                     $("#tbl").find("tr:gt(0)").remove();
                     GetData();
                 },
                 error: function () {
-                    alert('delete error !!');
+                    toastr.error("Veri silinemedi.");
                 }
             });
         }

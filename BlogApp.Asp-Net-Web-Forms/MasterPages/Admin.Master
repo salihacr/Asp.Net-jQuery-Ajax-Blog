@@ -1,8 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="BlogApp.Asp_Net_Web_Forms.MasterPages.Admin" %>
 
-
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
     <title>Blog App</title>
@@ -17,11 +15,17 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
+    <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
+    <script src="../Content/js/bootstrap/popper.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../Content/js/sb-admin-2.min.js"></script>
+
 </head>
+
 <body id="page-top">
     <div id="wrapper">
 
@@ -41,9 +45,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="../Blog/Index.aspx">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Blog Anasayfa</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider" />
@@ -189,15 +193,24 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
-    <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
-    <script src="../Content/js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript-->
+    <style>
+        #toast-container > .toast-success {
+            background-color: #28a745 !important;
+        }
 
-    <!-- Custom scripts for all pages-->
-    <script src="../Content/js/sb-admin-2.min.js"></script>
+        #toast-container > .toast-info {
+            background-color: #17a2b8 !important;
+        }
+
+        #toast-container > .toast-warning {
+            background-color: #e0a800 !important;
+        }
+
+        #toast-container > .toast-error {
+            background-color: #bd2130 !important;
+        }
+    </style>
 
     <!-- JavaScript -->
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </body>
 </html>

@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="Admin\AddBlog.aspx" />
     <Content Include="Admin\Blogs.aspx" />
+    <Content Include="Admin\Blogs2.aspx" />
     <Content Include="Admin\Categories.aspx" />
     <Content Include="Admin\Comments.aspx" />
     <Content Include="Admin\EditBlog.aspx" />
@@ -81,7 +82,6 @@
       <DependentUpon>blog-db.mdf</DependentUpon>
     </Content>
     <Content Include="Auth\Login.aspx" />
-    <Content Include="Auth\Register.aspx" />
     <Content Include="Blog\Article.aspx" />
     <Content Include="Blog\Index.aspx" />
     <Content Include="Global.asax" />
@@ -101,6 +101,13 @@
     </Compile>
     <Compile Include="Admin\Blogs.aspx.designer.cs">
       <DependentUpon>Blogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Blogs2.aspx.cs">
+      <DependentUpon>Blogs2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Blogs2.aspx.designer.cs">
+      <DependentUpon>Blogs2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Categories.aspx.cs">
       <DependentUpon>Categories.aspx</DependentUpon>
@@ -136,13 +143,6 @@
     </Compile>
     <Compile Include="Auth\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Auth\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Auth\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Blog\Article.aspx.cs">
       <DependentUpon>Article.aspx</DependentUpon>

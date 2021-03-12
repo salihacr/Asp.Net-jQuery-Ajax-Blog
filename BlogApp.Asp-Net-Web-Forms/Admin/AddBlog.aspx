@@ -46,7 +46,11 @@
         </div>
     </div>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
+    <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
+    <script src="../Content/js/bootstrap/popper.min.js"></script>
     <script>
 
         var editor = CKEDITOR.replace('blogContent');
@@ -63,26 +67,24 @@
         }
         function save() {
 
-            var blogUserId = <%Session["UserId"]%>;
+            var blogUserId = "<%=Session["UserId"] %>";
 
             var selectedValue = $("#<%= ddlCategories.ClientID %>").val();
             var selectedText = $("#<%= ddlCategories.ClientID %>:selected").val();
 
-
-            console.log("{blogName:'" + $("#blogName").val() + "'" + ", blogUrl: '" + $("#blogUrl").val() + "', blogContent: '" + editor.getData() + "', blogCategoryId: '" + selectedValue +
-                "',blogUserId:'" + blogUserId + "'}");
+            const obj = "{blogName:'" + $("#blogName").val() + "'" + ", blogUrl: '" + $("#blogUrl").val() + "', blogContent: '" + editor.getData() + "', blogCategoryId: '" + selectedValue + "',blogUserId:'" + blogUserId + "'}";
+            console.log(obj);
             $.ajax({
                 url: 'AddBlog.aspx/InsertBlog',
                 type: 'post',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
-                data: "{blogName:'" + $("#blogName").val() + "'" + ", blogUrl: '" + $("#blogUrl").val() + "', blogContent: '" + editor.getData() + "', blogCategoryId: '" + selectedValue +
-                    "',blogUserId:'" + blogUserId + "'}",
+                data: obj,
                 success: function () {
-                    alert("Insert data Successfully");
+                    toastr.success("Blog başarıyla eklendi.");
                 },
                 error: function (e) {
-                    alert("Insert Error" + e.responseText);
+                    toastr.error("Blog oluşturulurken hata meydana geldi.");
                 }
             });
         }

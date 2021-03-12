@@ -30,11 +30,13 @@
         </div>
     </div>
     <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
+    <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
+    <script src="../Content/js/bootstrap/popper.min.js"></script>
+
     <script>
         $(document).ready(function () {
             GetBlogList();
         });
-
         function GetBlogList() {
             $.ajax({
                 url: 'Blogs.aspx/GetBlogList',
@@ -45,22 +47,30 @@
                 success: function (_data) {
                     _data = JSON.parse(_data.d);
                     $("#tbl").find("tr:gt(0)").remove();
-
                     for (var i = 0; i < _data.length; i++) {
-                        $("#tbl").append(
-                            '<tr><td>' + _data[i].BlogName + '</td><td>' + _data[i].BlogURL + '</td>'
-                            + '<td> ' + _data[i].CreateDate + '</td>'
-                            + '<td><input type="button" id="btndelete" value="Sil" class="btn btn-danger mr-2" onclick="DeleteData(' + _data[i].BlogId + ')" />'
-                            + '<a class="btn btn-warning ml-2" href="/Admin/EditBlog.aspx?blogId=' + _data[i].BlogId + '">Güncelle</a> </td>  </tr>');
+                        $("#tbl").append(tableRow(_data, i));
                     }
                 },
                 error: function () {
-                    alert("Get Error");
+                    toastr.error("Bloglar listelenirken hata oluştu.");
                 }
             });
         }
+        function tableRow(data, index) {
+            var data = ""
+                + "<tr>"
+                + "<td>" + data[index].BlogName + "</td>"
+                + "<td>" + data[index].BlogURL + "</td>"
+                + "<td>" + data[index].CreationDate + "</td>"
+                + "<td>"
+                + "<button type='button' class='btn btn-danger mr-2' id='btndelete' onclick='Delete(" + data[index].BlogId + ")'> <i class='fa fa-trash'></i></button> "
+                + "<a class='btn btn-warning mr-2' id='btnEdit' href='/Admin/EditBlog.aspx?blogId=" + data[index].BlogId + "'><i class='fa fa-edit'></i></a>"
+                + "</td>"
+                + "</tr>";
+            return data;
+        }
         //Delete Record
-        function DeleteData(blogId) {
+        function Delete(blogId) {
             $.ajax({
                 url: 'Blogs.aspx/Delete',
                 type: 'post',
@@ -68,11 +78,11 @@
                 dataType: 'json',
                 data: "{blogId : '" + blogId + "'}",
                 success: function () {
-                    alert('delete success !!');
+                    toastr.success("Blog başarıyla silindi.");
                     GetBlogList();
                 },
                 error: function () {
-                    alert('delete error !!');
+                    toastr.error("Blog silinirken hata oluştu.");
                 }
             });
         }

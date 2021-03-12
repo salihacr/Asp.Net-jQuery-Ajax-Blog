@@ -29,7 +29,7 @@
                                 <h3 class="post-subtitle"><%#Eval("BlogURL") %>
                                 </h3>
                             </a>
-                            <p class="post-meta"><%#Eval("Username") %> | <%#("CreationDate").ToString() %> </p>
+                            <p class="post-meta"><%#Eval("Username") %> | <%#Eval("CreationDate") %> </p>
                             <hr>
                     </ItemTemplate>
                 </asp:Repeater>

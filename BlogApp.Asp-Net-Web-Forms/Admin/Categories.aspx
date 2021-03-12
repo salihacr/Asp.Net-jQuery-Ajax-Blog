@@ -44,6 +44,8 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
     <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
     <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
     <script src="../Content/js/bootstrap/popper.min.js"></script>
@@ -53,8 +55,6 @@
     <script>
         $(document).ready(function () {
             GetData();
-            $.noConflict();
-            $('#tbl').DataTable();
         });
         //In url write your page name like"CRUD.aspx" and Webmethod name "InsertData".
         //Write jQuery Ajax to call WebMethod(InsertData)
@@ -67,11 +67,11 @@
                     dataType: 'json',
                     data: "{categoryName:'" + $("#categoryName").val() + "'}",
                     success: function () {
-                        alert("Insert data Successfully");
+                        toastr.success("Kategori başarı ile eklendi.");
                         GetData();
                     },
                     error: function (e) {
-                        alert("Insert Error" + e.responseText);
+                        toastr.error("Veri kayıt hatası.");
                     }
                 });
             }
@@ -83,12 +83,12 @@
                     dataType: 'json',
                     data: "{categoryId:'" + idd + "',categoryName:'" + $("#categoryName").val() + "'}",
                     success: function () {
-                        alert("Update data Successfully");
+                        toastr.success("Kategori başarı ile güncellendi.");
                         $("#btnSubmit").val("KAYDET");
                         GetData();
                     },
                     error: function () {
-                        alert("Update Error");
+                        toastr.error("Veri güncelleme hatası.");
                     }
 
                 });
@@ -119,7 +119,7 @@
                     }
                 },
                 error: function () {
-                    alert("Get Error");
+                    toastr.error("Veri getirilemedi.");
                 }
             });
 
@@ -140,9 +140,9 @@
                     idd = categoryId;
                 },
                 error: function () {
-                    alert('edit error !!');
+                    toastr.error("Düzenleme hatası.");
                 }
-            });           
+            });
         }
         //Delete Record
         function DeleteData(categoryId) {
@@ -153,12 +153,12 @@
                 dataType: 'json',
                 data: "{categoryId : '" + categoryId + "'}",
                 success: function () {
-                    alert('delete success !!');
+                    toastr.success("Veri başarıyla silindi.");
                     $("#tbl").find("tr:gt(0)").remove();
                     GetData();
                 },
                 error: function () {
-                    alert('delete error !!');
+                    toastr.error("Veri silme hatası.");
                 }
             });
         }

@@ -69,9 +69,7 @@
                 success: function (data) {
                     console.log(data.d);
                     let myData = JSON.parse(data.d);
-                    console.log(myData);
                     for (var i = 0; i < myData.length; i++) {
-                        console.log(myData[i]);
                         if (myData[i].IsApproved == true) {
                             $("#comments").append(
                                 "<label class='text-danger'>" + myData[i].Commenter + "</label> <br/><small>" + myData[i].CommentText + "</small><hr/> "
@@ -84,9 +82,8 @@
                     $('#releaseDate').insertBefore(myData[0].CreationDate);
                     $('#blogContent').html(myData[0].BlogContent);
                 },
-                error: function (error) {
-                    alert(error.responseText);
-                    alert("hata get");
+                error: function () {
+                    toastr.error("Blog getirilirken hata meydana geldi.");
                 }
             });
         }
@@ -100,12 +97,12 @@
                 dataType: 'json',
                 data: obj,
                 success: function () {
-                    alert("Insert data Successfully");
+                    toastr.success("Yorumunuz onay için gönderildi.");
                     $("#comments").html("");
                     GetData();
                 },
                 error: function (e) {
-                    alert("Insert Error" + e.responseText);
+                    toastr.error("Yorum kayıt hatası.");
                 }
             });
         }

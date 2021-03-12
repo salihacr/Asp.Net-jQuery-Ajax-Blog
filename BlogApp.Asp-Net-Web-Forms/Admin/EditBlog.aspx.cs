@@ -1,14 +1,10 @@
-﻿using BlogApp.Asp_Net_Web_Forms.Helpers;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+using BlogApp.Asp_Net_Web_Forms.Helpers;
+using Newtonsoft.Json;
 
 namespace BlogApp.Asp_Net_Web_Forms.Admin
 {
@@ -42,7 +38,6 @@ namespace BlogApp.Asp_Net_Web_Forms.Admin
         [WebMethod]
         public static string GetBlogById(string blogId)
         {
-            // Sessiondan gelen user id yi vereceğiz arka tarafta önde de verebiliriz keyfe kalmış
             string _data = "";
             string query = "Select * From Blogs INNER JOIN Categories ON Categories.CategoryId = Blogs.BlogCategoryId Where BlogId = @blogId";
             SqlCommand cmd = new SqlCommand(query, connection);
@@ -62,10 +57,9 @@ namespace BlogApp.Asp_Net_Web_Forms.Admin
         [WebMethod]
         public static void UpdateBlog(string blogId, string blogName, string blogUrl, string blogContent, int blogCategoryId)
         {
-
-            string query = "Update Blogs(BlogName, BlogUrl, BlogContent, BlogCategoryId) Values" +
-                "(@blogName, @blogUrl, @blogContent, @blogCategoryId)" +
-                " Where BlogId=" + blogId;
+            string query = "Update Blogs Set BlogName=@blogName, BlogURL=@blogUrl," +
+                           " BlogContent=@blogContent, BlogCategoryId=@blogCategoryId" +
+                           " Where BlogId=@blogId";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -73,6 +67,7 @@ namespace BlogApp.Asp_Net_Web_Forms.Admin
             cmd.Parameters.AddWithValue("@blogUrl", blogUrl);
             cmd.Parameters.AddWithValue("@blogContent", blogContent);
             cmd.Parameters.AddWithValue("@blogCategoryId", blogCategoryId);
+            cmd.Parameters.AddWithValue("@blogId", blogId);
             connection.Open();
             cmd.ExecuteNonQuery();
             connection.Close();

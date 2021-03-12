@@ -1,9 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="BlogApp.Asp_Net_Web_Forms.Auth.Login" %>
-
-
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">
     <title></title>
 
@@ -70,13 +67,8 @@
         </div>
     </form>
     <!-- Bootstrap core JavaScript-->
-    <script src="../Content/vendor/jquery/jquery.min.js"></script>
-    <script src="../Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="../Content/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="../Content/js/sb-admin-2.min.js"></script>
-    <!-- Page level plugins -->
-    <script src="../Content/vendor/chart.js/Chart.min.js"></script>
+    <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
+    <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
+    <script src="../Content/js/bootstrap/popper.min.js"></script>
 </body>
 </html>
