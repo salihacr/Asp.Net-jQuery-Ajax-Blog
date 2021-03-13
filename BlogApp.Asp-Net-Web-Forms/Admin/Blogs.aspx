@@ -12,27 +12,26 @@
         </div>
         <div class="card-body">
             <div class="table">
-                <form id="formUser" method="post">
-                    <table id="tbl" class="table table-striped table-hover table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Blog Adı</th>
-                                <th>Blog Url</th>
-                                <th>Yayınlanma Tarihi</th>
-                                <th>İşlemler</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </form>
+                <table id="tbl" class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Blog Adı</th>
+                            <th>Blog Url</th>
+                            <th>Yayınlanma Tarihi</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+        <script src="../Content/js/toastr.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
     <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
     <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
     <script src="../Content/js/bootstrap/popper.min.js"></script>
-
     <script>
         $(document).ready(function () {
             GetBlogList();
@@ -48,7 +47,7 @@
                     _data = JSON.parse(_data.d);
                     $("#tbl").find("tr:gt(0)").remove();
                     for (var i = 0; i < _data.length; i++) {
-                        $("#tbl").append(tableRow(_data, i));
+                        $("#tbl").append(tableRow2(_data, i));
                     }
                 },
                 error: function () {
@@ -67,6 +66,19 @@
                 + "<a class='btn btn-warning mr-2' id='btnEdit' href='/Admin/EditBlog.aspx?blogId=" + data[index].BlogId + "'><i class='fa fa-edit'></i></a>"
                 + "</td>"
                 + "</tr>";
+            return data;
+        }
+        function tableRow2(data, index) {
+            var data = `
+                <tr>
+                <td>${data[index].BlogName}</td>
+                <td>${data[index].BlogURL}</td>
+                <td>${data[index].CreationDate}</td>
+                <td>
+                <button type="button" class="btn btn-danger mr-2" id="btnDeleteBlog" onclick="Delete('${data[index].BlogId}')"><i class="fa fa-trash"></i></button>
+                <a class="btn btn-warning mr-2" id="btnEditBlog" href="/Admin/EditBlog.aspx?blogId=${data[index].BlogId}"><i class="fa fa-edit"></i></a>
+                </td>
+                </tr>`;
             return data;
         }
         //Delete Record

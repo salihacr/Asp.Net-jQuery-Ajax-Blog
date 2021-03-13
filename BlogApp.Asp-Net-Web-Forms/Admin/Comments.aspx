@@ -51,17 +51,14 @@
             </div>
         </div>
     </div>
+        <script src="../Content/js/toastr.min.js"></script>
     <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
     <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
     <script src="../Content/js/bootstrap/popper.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-
     <script>
         $(document).ready(function () {
             GetData();
-            $.noConflict();
-            $('#tbl').DataTable();
         });
         //Edit Record 
         function EditData(commentId) {
@@ -73,7 +70,6 @@
                 data: "{commentId : '" + commentId + "'}",
                 success: function (_dt) {
                     _dt = JSON.parse(_dt.d);
-                    console.log("edit : " + _dt[0].IsApproved);
                     if (_dt[0].IsApproved) {
                         $("#isApproved").prop("checked", true);
                     } else {
@@ -88,12 +84,8 @@
         async function Update(commentId) {
             await EditData(commentId);
             setTimeout(() => {
-                console.log("--------------" + $("#isApproved").is(":checked"));
                 var isApproved = $("#isApproved").is(":checked") == true ? 'true' : 'false';
-                console.log("isApproved : " + isApproved);
-                console.log(typeof isApproved);
                 const obj = "{commentId:'" + commentId + "', isApproved:'" + isApproved + "'}";
-                console.log(obj);
                 $.ajax({ // son kısım
                     url: 'Comments.aspx/Update',
                     type: 'post',
@@ -102,9 +94,6 @@
                     data: obj,
                     success: function () {
                         toastr.success("Yorum onayı güncellendi.");
-                        //toastr.error("Yorum onayı güncellendi.");
-                        //toastr.info("Yorum onayı güncellendi.");
-                        //toastr.warning("Yorum onayı güncellendi.");
                         GetData();
                     },
                     error: function () {

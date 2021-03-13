@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace BlogApp.Asp_Net_Web_Forms.MasterPages
 {
@@ -11,7 +6,7 @@ namespace BlogApp.Asp_Net_Web_Forms.MasterPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Role"].ToString() != "Admin" || Session["Role"] == null) Response.Redirect("../Auth/Login.aspx");
+            if (Session["UserId"] == null && Session["Role"].ToString() != "Admin") Response.Redirect("../Auth/Login.aspx");
         }
         protected void Logout_Button_Click(object sender, EventArgs e)
         {

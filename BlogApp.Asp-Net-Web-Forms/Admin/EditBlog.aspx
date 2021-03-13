@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="../Content/js/toastr.min.js"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
     <script src="../Content/js/bootstrap/bootstrap.min.js"></script>

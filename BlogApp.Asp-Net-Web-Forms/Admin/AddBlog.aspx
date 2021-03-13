@@ -45,12 +45,12 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="../Content/js/toastr.min.js"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="../Content/js/bootstrap/jquery-3.4.1.min.js"></script>
     <script src="../Content/js/bootstrap/bootstrap.min.js"></script>
     <script src="../Content/js/bootstrap/popper.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script>
 
         var editor = CKEDITOR.replace('blogContent');
@@ -83,7 +83,7 @@
                 success: function () {
                     toastr.success("Blog başarıyla eklendi.");
                 },
-                error: function (e) {
+                error: function () {
                     toastr.error("Blog oluşturulurken hata meydana geldi.");
                 }
             });
