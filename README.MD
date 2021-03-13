@@ -115,7 +115,6 @@ END
     Right click on the Blog/Index.aspx
     and 
     Click Set As Start Page.
-
 ```
 
 ```
@@ -126,3 +125,17 @@ END
 ```
     That's it. 😀
 ```
+### *[Youtube Video Here](http://www.youtube.com/watch?v=wcaa0A4ePy4)*
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wcaa0A4ePy4/0.jpg)](http://www.youtube.com/watch?v=wcaa0A4ePy4)
+
+
+## Project Images
+
+### *Admin Interface*
+<hr/>
+<img src='./images/admin.PNG' />
+
+### *User Interface*
+<hr/>
+<img src='./images/blog.PNG' />
